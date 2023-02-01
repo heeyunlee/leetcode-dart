@@ -1,10 +1,10 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:leetcode_dart/problems/0001_two_sum.dart';
-import 'package:leetcode_dart/problems/0002_add_two_numbers.dart';
-import 'package:leetcode_dart/problems/0003_longest_substring_without_repeating_char.dart';
-import 'package:leetcode_dart/problems/0009_palindrome_number.dart';
-import 'package:leetcode_dart/problems/0013_roman_to_integer.dart';
-import 'package:leetcode_dart/problems/1071_greatest_common_divisor_of_strings.dart';
+import '../problems/0001_two_sum.dart';
+import '../problems/0002_add_two_numbers.dart';
+import '../problems/0003_longest_substring_without_repeating_char.dart';
+import '../problems/0009_palindrome_number.dart';
+import '../problems/0013_roman_to_integer.dart';
+import '../problems/1071_greatest_common_divisor_of_strings.dart';
 
 void main() {
   group('1. Two Sum', () {
