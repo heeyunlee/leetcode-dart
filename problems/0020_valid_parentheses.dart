@@ -1,3 +1,10 @@
+/// https://leetcode.com/problems/valid-parentheses/
+///
+/// Explanation: For the input to have a valid parenthese, the open brackets must
+/// be closed by the same type of brackets AND in the correct order. Therefore,
+/// we can keep track of every open brackets that appear, and whenever the close
+/// bracket appears, we can check if the matching open bracket exists. If not,
+/// it means the string does not have a valid parentheses.
 bool isValidParentheses(String s) {
   final open = ['(', '{', '['];
   final close = [')', '}', ']'];
@@ -21,9 +28,5 @@ bool isValidParentheses(String s) {
     }
   }
 
-  if (stack.isEmpty) {
-    return true;
-  } else {
-    return false;
-  }
+  return stack.isEmpty;
 }

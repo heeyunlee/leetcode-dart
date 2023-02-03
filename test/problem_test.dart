@@ -2,9 +2,15 @@ import 'package:flutter_test/flutter_test.dart';
 import '../problems/0001_two_sum.dart';
 import '../problems/0002_add_two_numbers.dart';
 import '../problems/0003_longest_substring_without_repeating_char.dart';
+import '../problems/0004_median_of_two_sorted_arrays.dart';
+import '../problems/0005_longest_palindromic_substring.dart';
 import '../problems/0009_palindrome_number.dart';
 import '../problems/0013_roman_to_integer.dart';
+import '../problems/0015_threesum.dart';
+import '../problems/0019_remove_nth_node_from_end_of_list.dart' as nineteen;
+import '../problems/0020_valid_parentheses.dart';
 import '../problems/1071_greatest_common_divisor_of_strings.dart';
+import '../problems/1207_unique_number_of_occurrences.dart';
 
 void main() {
   group('1. Two Sum', () {
@@ -45,26 +51,59 @@ void main() {
     test('Case 3', () {
       final result = addTwoNumbers(
         ListNode(
+          9,
+          ListNode(
             9,
             ListNode(
+              9,
+              ListNode(
                 9,
                 ListNode(
-                    9, ListNode(9, ListNode(9, ListNode(9, ListNode(9))))))),
-        ListNode(9, ListNode(9, ListNode(9, ListNode(9)))),
+                  9,
+                  ListNode(
+                    9,
+                    ListNode(9),
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ),
+        ListNode(
+          9,
+          ListNode(
+            9,
+            ListNode(
+              9,
+              ListNode(9),
+            ),
+          ),
+        ),
       );
       expect(
           result.toString(),
           ListNode(
-                  8,
+            8,
+            ListNode(
+              9,
+              ListNode(
+                9,
+                ListNode(
+                  9,
                   ListNode(
-                      9,
+                    0,
+                    ListNode(
+                      0,
                       ListNode(
-                          9,
-                          ListNode(
-                              9,
-                              ListNode(
-                                  0, ListNode(0, ListNode(0, ListNode(1))))))))
-              .toString());
+                        0,
+                        ListNode(1),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ).toString());
     });
   });
 
@@ -82,6 +121,30 @@ void main() {
     test('Case 3', () {
       final result = lengthOfLongestSubstring('pwwkew');
       expect(result, 3);
+    });
+  });
+
+  group('4. Median of Two Sorted Arrays', () {
+    test('Case 1', () {
+      final result = findMedianSortedArrays([1, 3], [2]);
+      expect(result, 2);
+    });
+
+    test('Case 2', () {
+      final result = findMedianSortedArrays([1, 2], [3, 4]);
+      expect(result, 2.5);
+    });
+  });
+
+  group('5. Longest Palindromic Substring', () {
+    test('Case 1', () {
+      final result = longestPalindromeSubstring('babad');
+      expect(result, 'bab');
+    });
+
+    test('Case 2', () {
+      final result = longestPalindromeSubstring('cbbd');
+      expect(result, 'bb');
     });
   });
 
@@ -116,6 +179,94 @@ void main() {
     });
   });
 
+  group('15. 3Sum', () {
+    test('Case 1', () {
+      final result = threesum([-1, 0, 1, 2, -1, -4]);
+      expect(result, [
+        [-1, -1, 2],
+        [-1, 0, 1]
+      ]);
+    });
+
+    test('Case 2', () {
+      final result = threesum([0, 1, 1]);
+      expect(result, []);
+    });
+
+    test('Case 3', () {
+      final result = threesum([0, 0, 0]);
+      expect(result, [
+        [0, 0, 0]
+      ]);
+    });
+  });
+
+  group('19. Remove Nth Node From End of List', () {
+    test('Case 1', () {
+      final result = nineteen.removeNthNodeFromEnd(
+        nineteen.ListNode(
+          1,
+          nineteen.ListNode(
+            2,
+            nineteen.ListNode(
+              3,
+              nineteen.ListNode(
+                4,
+                nineteen.ListNode(5),
+              ),
+            ),
+          ),
+        ),
+        2,
+      );
+
+      expect(
+        result.toString(),
+        nineteen.ListNode(
+          1,
+          nineteen.ListNode(
+            2,
+            nineteen.ListNode(
+              3,
+              nineteen.ListNode(5),
+            ),
+          ),
+        ).toString(),
+      );
+    });
+
+    test('Case 2', () {
+      final result = nineteen.removeNthNodeFromEnd(nineteen.ListNode(), 1);
+      expect(result.toString(), null.toString());
+    });
+
+    test('Case 3', () {
+      final result = nineteen.removeNthNodeFromEnd(
+        nineteen.ListNode(1, nineteen.ListNode(2)),
+        1,
+      );
+
+      expect(result.toString(), nineteen.ListNode(1).toString());
+    });
+  });
+
+  group('20. Valid Parentheses', () {
+    test('Case 1', () {
+      final result = isValidParentheses('()');
+      expect(result, true);
+    });
+
+    test('Case 2', () {
+      final result = isValidParentheses('()[]{}');
+      expect(result, true);
+    });
+
+    test('Case 3', () {
+      final result = isValidParentheses('(]');
+      expect(result, false);
+    });
+  });
+
   group('1071. Greatest Common Divisor of Strings', () {
     test('Case 1', () {
       final result = gcdOfStrings('ABCABC', 'ABC');
@@ -130,6 +281,23 @@ void main() {
     test('Case 3', () {
       final result = gcdOfStrings('LEET', 'CODE');
       expect(result, '');
+    });
+  });
+
+  group('1207. Unique Number of Occurrences', () {
+    test('Case 1', () {
+      final result = uniqueOccurrences([1, 2, 2, 1, 1, 3]);
+      expect(result, true);
+    });
+
+    test('Case 2', () {
+      final result = uniqueOccurrences([1, 2]);
+      expect(result, false);
+    });
+
+    test('Case 3', () {
+      final result = uniqueOccurrences([-3, 0, 1, -3, 1, 1, 1, -3, 10, 0]);
+      expect(result, true);
     });
   });
 }

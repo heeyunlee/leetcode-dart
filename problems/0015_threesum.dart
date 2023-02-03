@@ -1,3 +1,4 @@
+/// https://leetcode.com/problems/3sum/
 List<List<int>> threesum(List<int> nums) {
   if (nums.length < 3) {
     return [];
@@ -15,7 +16,9 @@ List<List<int>> threesum(List<int> nums) {
       final threesum = nums[i] + nums[l] + nums[r];
 
       if (threesum == 0) {
-        result.add([nums[i], nums[l], nums[r]]);
+        final newList = [nums[i], nums[l], nums[r]];
+
+        if (!result.contains(newList)) result.add(newList);
 
         l++;
         r--;
