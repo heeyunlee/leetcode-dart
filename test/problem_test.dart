@@ -9,6 +9,8 @@ import '../problems/0013_roman_to_integer.dart';
 import '../problems/0015_threesum.dart';
 import '../problems/0019_remove_nth_node_from_end_of_list.dart' as nineteen;
 import '../problems/0020_valid_parentheses.dart';
+import '../problems/0412._fizz_buzz.dart';
+import '../problems/0438._find_all_anagrams_in_a_string.dart';
 import '../problems/1071_greatest_common_divisor_of_strings.dart';
 import '../problems/1207_unique_number_of_occurrences.dart';
 
@@ -264,6 +266,55 @@ void main() {
     test('Case 3', () {
       final result = isValidParentheses('(]');
       expect(result, false);
+    });
+  });
+
+  group('412. Fizz Buzz', () {
+    final solution = Solution412();
+
+    test('Case 1', () {
+      expect(solution.fizzBuzz(3), ['1', '2', 'Fizz']);
+    });
+
+    test('Case 2', () {
+      expect(solution.fizzBuzz(5), ['1', '2', 'Fizz', '4', 'Buzz']);
+    });
+
+    test('Case 3', () {
+      expect(
+        solution.fizzBuzz(15),
+        [
+          '1',
+          '2',
+          'Fizz',
+          '4',
+          'Buzz',
+          'Fizz',
+          '7',
+          '8',
+          'Fizz',
+          'Buzz',
+          '11',
+          'Fizz',
+          '13',
+          '14',
+          'FizzBuzz'
+        ],
+      );
+    });
+  });
+
+  group('438. Find All Anagrams in a String', () {
+    final solution = Solution438();
+
+    test('Case 1', () {
+      final result = solution.findAnagrams('cbaebabacd', 'abc');
+      expect(result, [0, 6]);
+    });
+
+    test('Case 2', () {
+      final result = solution.findAnagrams('abab', 'ab');
+      expect(result, [0, 1, 2]);
     });
   });
 
