@@ -5,7 +5,9 @@ import '../problems/0003_longest_substring_without_repeating_char.dart';
 import '../problems/0004_median_of_two_sorted_arrays.dart';
 import '../problems/0005_longest_palindromic_substring.dart';
 import '../problems/0009_palindrome_number.dart';
+import '../problems/0011_container_with_most_water.dart';
 import '../problems/0013_roman_to_integer.dart';
+import '../problems/0014_longest_common_prefix.dart';
 import '../problems/0015_threesum.dart';
 import '../problems/0019_remove_nth_node_from_end_of_list.dart' as nineteen;
 import '../problems/0020_valid_parentheses.dart';
@@ -164,6 +166,19 @@ void main() {
     });
   });
 
+  group('11. Container With Most Water', () {
+    final solution = Solution11();
+    test('Case 1', () {
+      final result = solution.maxArea([1, 8, 6, 2, 5, 4, 8, 3, 7]);
+      expect(result, 49);
+    });
+
+    test('Case 2', () {
+      final result = solution.maxArea([1, 1]);
+      expect(result, 1);
+    });
+  });
+
   group('13. Roman to Integer', () {
     test('Case 1', () {
       final result = romanToInt('III');
@@ -178,6 +193,24 @@ void main() {
     test('Case 3', () {
       final result = romanToInt('MCMXCIV');
       expect(result, 1994);
+    });
+  });
+
+  group('14. Longest Common Prefix', () {
+    final solution = Solution14();
+
+    test('Case 1', () {
+      expect(
+        solution.longestCommonPrefix(['flower', 'flow', 'flight']),
+        'fl',
+      );
+    });
+
+    test('Case 2', () {
+      expect(
+        solution.longestCommonPrefix(['dog', 'racecar', 'car']),
+        '',
+      );
     });
   });
 
