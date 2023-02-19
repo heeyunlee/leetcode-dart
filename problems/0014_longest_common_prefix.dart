@@ -1,4 +1,6 @@
-class Solution14 {
+import 'main.dart';
+
+extension LongestCommonPrefix on Solution {
   /// https://leetcode.com/problems/longest-common-prefix/
   ///
   /// Explanation: Horizontal Scanning

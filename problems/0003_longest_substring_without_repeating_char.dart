@@ -1,24 +1,37 @@
 import 'dart:math';
 
-/// https://leetcode.com/problems/longest-substring-without-repeating-characters/
-int lengthOfLongestSubstring(String s) {
-  int start = 0;
-  int maxLength = 0;
+import 'main.dart';
 
-  // Keep track of used character and its index
-  Map<String, int> usedChar = {};
+extension LengthOfLongestSubstring on Solution {
+  /// https://leetcode.com/problems/longest-substring-without-repeating-characters/
+  ///
+  /// Explanation: Sliding Window
+  ///
+  /// Create two pointers, i and j, which will represent the starting and ending
+  /// index of the substring, respectively.
+  ///
+  /// We iterate through each character in `s`, marking the index as j, and we
+  /// also keep track of characters and their indexes so that if the character is
+  /// already found in the map, we can skip i to be j + 1.
+  ///
+  int lengthOfLongestSubstring(String s) {
+    if (s.length <= 1) return s.length;
 
-  for (int i = 0; i < s.length; i++) {
-    final char = s[i];
+    int i = 0;
+    int maxLength = 0;
+    Map<String, int> usedChar = {};
 
-    if (usedChar.containsKey(char) && start <= usedChar[char]!) {
-      start = usedChar[char]! + 1;
-    } else {
-      maxLength = max(maxLength, i - start + 1);
+    for (int j = 0; j < s.length; j++) {
+      final char = s[j];
+
+      if (usedChar.containsKey(char)) {
+        i = max(usedChar[char]! + 1, i);
+      }
+
+      maxLength = max(maxLength, j - i + 1);
+      usedChar[char] = j;
     }
 
-    usedChar[char] = i;
+    return maxLength;
   }
-
-  return maxLength;
 }

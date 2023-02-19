@@ -1,12 +1,4 @@
-class ListNode {
-  ListNode({
-    this.val = 0,
-    this.next,
-  });
-
-  int val;
-  ListNode? next;
-}
+import 'list_node.dart';
 
 ListNode? middleNode(ListNode? head) {
   ListNode? tortoise = head, hare = head;

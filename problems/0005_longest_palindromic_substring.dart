@@ -1,39 +1,45 @@
-/// https://leetcode.com/problems/longest-palindromic-substring/
-String longestPalindromeSubstring(String s) {
-  String result = '';
+import 'main.dart';
 
-  // Set each s[i] as a center of the polindrome
-  for (int i = 0; i < s.length; i++) {
-    // ada
-    String odd = _getLongestPalindrome(s, i, i);
+extension LongestPalindrome on Solution {
+  /// https://leetcode.com/problems/longest-palindromic-substring/
+  ///
+  /// Explanation: "Expand around center"
+  ///
+  /// Iterate over each character in `s` and uses that character (and possibly
+  /// its adjacent character) as the center of a potential palindrome substring.
+  /// For each center, the function checks if the substring centered around that
+  /// character is a palindrome by expanding outwards from the center and
+  /// comparing the characters at each end.
+  String longestPalindrome(String s) {
+    String result = '';
 
-    // adda
-    String even = _getLongestPalindrome(s, i, i + 1);
-    String palindrome = odd.length > even.length ? odd : even;
+    for (int i = 0; i < s.length; i++) {
+      // For odd length strings, e.g., aba
+      int l = i, r = i;
 
-    if (palindrome.length > result.length) {
-      result = palindrome;
+      while (l >= 0 && r < s.length && s[l] == s[r]) {
+        if (r - l + 1 >= result.length) {
+          result = s.substring(l, r + 1);
+        }
+
+        l--;
+        r++;
+      }
+
+      // For even length strings, e.g., abba
+      l = i;
+      r = i + 1;
+
+      while (l >= 0 && r < s.length && s[l] == s[r]) {
+        if (r - l + 1 >= result.length) {
+          result = s.substring(l, r + 1);
+        }
+
+        l--;
+        r++;
+      }
     }
+
+    return result;
   }
-
-  return result;
-}
-
-String _getLongestPalindrome(String s, int l, int r) {
-  String result = '';
-
-  /// Starting from the middle, left pointer `l` and right pointer 'r' keep pointing
-  /// outward, until the pointed characters do not match.
-  while (l >= 0 && r < s.length && s[l] == s[r]) {
-    int palindromeLen = r - l + 1;
-
-    if (palindromeLen > result.length) {
-      result = s.substring(l, r + 1);
-    }
-
-    l--;
-    r++;
-  }
-
-  return result;
 }
