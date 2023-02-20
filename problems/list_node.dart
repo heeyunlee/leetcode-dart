@@ -5,7 +5,14 @@ class ListNode {
   ListNode? next;
 
   @override
-  String toString() {
-    return 'ListNode(val: $val, next: ${next?.toString()})';
+  int get hashCode => val.hashCode ^ next.hashCode;
+
+  @override
+  bool operator ==(covariant ListNode other) {
+    if (identical(this, other)) return true;
+
+    return other.runtimeType == ListNode &&
+        other.val == val &&
+        other.next == next;
   }
 }
